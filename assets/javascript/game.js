@@ -1,26 +1,28 @@
-var computerChoices = ["PUG","POODLE","SCHNAUZER","DOBERMAN","BOXER","CHIHUAHUA","POMERANIAN","BULLDOG","LABRADOR","DALMATION"];
+var computerChoices = ["PUG", "POODLE", "SCHNAUZER", "DOBERMAN", "BOXER", "CHIHUAHUA", "POMERANIAN", "BULLDOG", "LABRADOR", "DALMATION"];
 var wins = 0;
 var losses = 0;
 var guessesRemaining = 15;
-var guessesSoFar = [];
+var guessedSoFar = [];
 var chosenWord = [];
 
 // select random dog from array
 function newRand() {
     computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     console.log('ComputerGuess', computerGuess);
-    console.log('CG Length',computerGuess.length);
+    console.log('CG Length', computerGuess.length);
     // create visual representation of each letter in computer guess
-    for (i=0;i<computerGuess.length;i++) {
+    for (i = 0; i < computerGuess.length; i++) {
         chosenWord.push(" __ ");
         console.log(chosenWord);
     }
+    document.querySelector("#chosenWord").innerHTML = chosenWord.join("");
 }
 
 // function to reset variables when game ends
 function reset() {
     guessesRemaining = 15;
     guessedSoFar = [];
+    chosenWord = [];
 
     document.querySelector("#guessesRemaining").innerHTML = "Guesses remaining: " + guessesRemaining;
     document.querySelector("#guessedSoFar").innerHTML = "Guessed so far: " + guessedSoFar;
@@ -30,7 +32,7 @@ function updateSoFar() {
     document.querySelector('#guessedSoFar').innerHTML = "Guessed so far: " + guessedSoFar + ', ';
 };
 
-/*
+/* need to update array and visual display if correct letter is chosen
 function updateWord() {
     document.querySelector('#chosenWord').innerHTML = "insert word here";
 }
@@ -41,7 +43,7 @@ newRand();
 // This function is run whenever the user presses a key
 document.onkeyup = function (event) {
     // Determines which key was pressed and logs it
-    var userGuess = event.key.toLowerCase();
+    var userGuess = event.key.toUpperCase();
     console.log('UserGuess', userGuess);
 
     guessesRemaining--; // reduce remaining guesses by 1
@@ -50,8 +52,18 @@ document.onkeyup = function (event) {
 
     // determine if there are still guesses available
     if (guessesRemaining > 0) {
+        if (computerGuess.indexOf(userGuess) > -1) {
+            alert("that letter is in my word");
+        } else {
+            alert("try again");
+        }
 
+    } else { // no guesses remaining, game is over
+        losses++;
+        document.querySelector("#losses").innerHTML = "Losses: " + losses + "";
+        alert("Sorry you did not guess the word.  It was " + computerGuess);
+        reset();
+        newRand();
     }
-      
 
 }
