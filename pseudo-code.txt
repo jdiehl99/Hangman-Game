@@ -1,0 +1,10 @@
+set all variables (wins, losses, remaining guesses, letters used)
+define array of possible words for computer to choose
+select random word from array and display to screen
+capture keyboard input from user
+compare to letters already used -- if already guessed, do nothing
+reduce remaining guesses by 1
+compare user choice to letters in computer choice using indexOf
+if correct, display letter in word at correct locations
+continue until guesses are exhausted (increase losses) or word is complete (increase wins)
+reset game
