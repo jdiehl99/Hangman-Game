@@ -1,6 +1,9 @@
 set all variables (wins, losses, remaining guesses, letters used)
 define array of possible words for computer to choose
 select random word from array and display to screen
+    will need a for loop to create __ for each letter
+    will need to keep __ and chosen in array to display
+    use splice to push into correct location
 capture keyboard input from user
 compare to letters already used -- if already guessed, do nothing
 reduce remaining guesses by 1
