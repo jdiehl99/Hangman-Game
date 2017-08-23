@@ -1,7 +1,7 @@
-var computerChoices = ["PUG", "POODLE", "SCHNAUZER", "DOBERMAN", "BOXER", "CHIHUAHUA", "POMERANIAN", "BULLDOG", "LABRADOR", "DALMATION"];
+var computerChoices = ["PUG", "POODLE", "SCHNAUZER", "DOBERMAN", "BOXER", "CHIHUAHUA", "POMERANIAN", "BULLDOG", "LABRADOR", "DALMATION","BEAGLE","DACHSHUND","GREYHOUND","PEKINGESE"];
 var wins = 0;
 var losses = 0;
-var guessesRemaining = 12;
+var guessesRemaining = 15;
 var guessedSoFar = [];
 var chosenWord = [];
 
@@ -20,7 +20,7 @@ function newRand() {
 
 // function to reset variables when game ends
 function reset() {
-    guessesRemaining = 12;
+    guessesRemaining = 15;
     guessedSoFar = [];
     chosenWord = [];
 
@@ -31,7 +31,6 @@ function reset() {
 function updateSoFar() {
     document.querySelector('#guessedSoFar').innerHTML = "Guessed so far: " + guessedSoFar + ', ';
 };
-
 
 newRand();
 
@@ -65,8 +64,9 @@ document.onkeyup = function (event) {
                 var stillTime = chosenWord.indexOf(" __ ");
                 if (stillTime < 0) {
                     wins++;
+                    var dogPic = computerGuess.toLowerCase();
                     document.querySelector("#wins").innerHTML = "Wins: " + wins + "";
-                    alert("You win!");
+                    document.querySelector("#dogPic").innerHTML = "<img src=\"assets/images/" + dogPic + ".jpg\" class=\"img-fluid\" alt=\"" + dogPic + "\"><br/><h2>You Win!</h2>";
                     reset();
                     newRand();
                 }

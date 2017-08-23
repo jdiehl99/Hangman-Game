@@ -1,0 +1,24 @@
+body {
+    background-image: url("../images/footer_lodyas.png");
+}
+.container {
+    background-color: #fff;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    color: #5A4D4D;
+}
+h2 {
+    text-align: center;
+    color: pink;
+}
+.coldrop {
+    padding-top: 20px;
+}
+.row {
+    margin: 10px;
+}
+#dogPic {
+    float: right;
+}
