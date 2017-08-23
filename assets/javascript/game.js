@@ -32,11 +32,22 @@ function updateSoFar() {
     document.querySelector('#guessedSoFar').innerHTML = "Guessed so far: " + guessedSoFar + ', ';
 };
 
-/* need to update array and visual display if correct letter is chosen
+
 function updateWord() {
-    document.querySelector('#chosenWord').innerHTML = "insert word here";
-}
+    /*
+var letterPosition = chosenWord.indexOf(userGuess);
+console.log(letterPosition);
+chosenWord.splice(letterPosition, 0, userGuess);
+document.querySelector('#chosenWord').innerHTML = chosenWord.join("");
+
+            var letterPosition = computerGuess.indexOf(userGuess);
+            console.log(letterPosition);
 */
+
+
+
+}
+
 
 newRand();
 
@@ -54,6 +65,14 @@ document.onkeyup = function (event) {
     if (guessesRemaining > 0) {
         if (computerGuess.indexOf(userGuess) > -1) {
             alert("that letter is in my word");
+            // determine how many times letter appears in word and at what locations
+            var letterPosition = computerGuess.indexOf(userGuess);
+            while (letterPosition != -1) {
+                chosenWord.splice(letterPosition, 1, userGuess);
+                console.log('letterPosition',letterPosition);
+                letterPosition = computerGuess.indexOf(userGuess,letterPosition + 1);
+            }
+            document.querySelector('#chosenWord').innerHTML = chosenWord.join("");
         } else {
             alert("try again");
         }
